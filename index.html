@@ -88,7 +88,7 @@
             color: var(--sage-dark);
         }
 
-        /* Hero Section - Centered Text Only */
+        /* Hero Section */
         .hero {
             min-height: 100vh;
             display: flex;
@@ -270,7 +270,7 @@
             line-height: 2;
         }
 
-        /* Projects Section */
+        /* Projects Section - Enhanced Hover */
         .projects-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
@@ -280,9 +280,14 @@
         .project-card {
             background: white;
             padding: 3rem;
-            transition: all 0.4s;
+            transition: all 0.5s ease;
             border: 1px solid #e8e4e0;
             position: relative;
+            cursor: pointer;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+            transform-origin: center;
         }
 
         .project-card::before {
@@ -300,9 +305,12 @@
             height: 100%;
         }
 
+        /* Enhanced hover - scale up for better readability */
         .project-card:hover {
-            box-shadow: 0 20px 60px rgba(45, 52, 54, 0.08);
-            border-color: var(--sage);
+            transform: scale(1.12);
+            box-shadow: 0 30px 80px rgba(45, 52, 54, 0.15);
+            border-color: var(--sage-dark);
+            z-index: 100;
         }
 
         .project-card h3 {
@@ -314,8 +322,16 @@
 
         .project-card p {
             color: var(--soft-gray);
-            margin-bottom: 2rem;
+            margin-bottom: 1.5rem;
             line-height: 1.9;
+            font-size: 0.95rem;
+        }
+
+        .project-details {
+            color: var(--soft-gray);
+            font-size: 0.9rem;
+            line-height: 1.8;
+            margin-top: 1rem;
         }
 
         .project-tags {
@@ -335,7 +351,7 @@
             border: 1px solid var(--sage);
         }
 
-        /* Timeline with Hover Scale */
+        /* Timeline with Enhanced Hover */
         .timeline {
             position: relative;
             max-width: 1000px;
@@ -375,16 +391,16 @@
             padding: 2.5rem;
             position: relative;
             border: 1px solid #e8e4e0;
-            transition: all 0.4s ease;
+            transition: all 0.5s ease;
             transform-origin: center;
         }
 
-        /* Hover effect - scale up */
+        /* Enhanced hover - scale up for better readability */
         .timeline-content:hover {
-            transform: scale(1.05);
-            box-shadow: 0 25px 70px rgba(45, 52, 54, 0.12);
+            transform: scale(1.12);
+            box-shadow: 0 30px 80px rgba(45, 52, 54, 0.15);
             border-color: var(--sage-dark);
-            z-index: 10;
+            z-index: 100;
         }
 
         .timeline-content::before {
@@ -431,11 +447,29 @@
             font-family: 'Montserrat', sans-serif;
         }
 
-        .timeline-content p {
-            color: var(--soft-gray);
+        .timeline-content ul {
+            list-style: none;
+            padding: 0;
+            margin-top: 1rem;
         }
 
-        /* Skills Section with Hover Scale */
+        .timeline-content ul li {
+            color: var(--soft-gray);
+            padding: 0.5rem 0;
+            padding-left: 20px;
+            position: relative;
+            font-size: 0.9rem;
+            line-height: 1.7;
+        }
+
+        .timeline-content ul li::before {
+            content: '◦';
+            position: absolute;
+            left: 0;
+            color: var(--sage-dark);
+        }
+
+        /* Skills Section */
         .skills-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -452,7 +486,6 @@
             transform-origin: center;
         }
 
-        /* Hover effect - scale up */
         .skill-card:hover {
             transform: scale(1.08);
             box-shadow: 0 25px 70px rgba(45, 52, 54, 0.12);
@@ -535,7 +568,7 @@
             color: var(--soft-gray);
         }
 
-        /* Extracurricular Section */
+        /* Extracurricular Section - Enhanced with Zoom Hover */
         .extra-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
@@ -546,18 +579,30 @@
             background: white;
             padding: 3rem;
             text-align: center;
-            transition: all 0.4s;
+            transition: all 0.5s ease;
             border: 1px solid #e8e4e0;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+            transform-origin: center;
         }
 
+        /* Enhanced hover - scale up for better readability */
         .extra-card:hover {
-            box-shadow: 0 20px 60px rgba(45, 52, 54, 0.08);
-            border-color: var(--sage);
+            transform: scale(1.12);
+            box-shadow: 0 30px 80px rgba(45, 52, 54, 0.15);
+            border-color: var(--sage-dark);
+            z-index: 100;
         }
 
         .extra-icon {
             font-size: 3rem;
             margin-bottom: 1.5rem;
+            transition: transform 0.3s ease;
+        }
+
+        .extra-card:hover .extra-icon {
+            transform: scale(1.2);
         }
 
         .extra-card h3 {
@@ -650,27 +695,100 @@
             letter-spacing: 0.5px;
         }
 
+        /* Hamburger Menu */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 5px;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: var(--sage-dark);
+            transition: all 0.3s;
+        }
+
         /* Responsive */
+        @media (max-width: 1024px) {
+            nav ul {
+                gap: 2rem;
+            }
+
+            .projects-grid {
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            }
+        }
+
         @media (max-width: 768px) {
+            /* Navigation */
             nav {
                 padding: 1rem 1.5rem;
             }
 
+            .hamburger {
+                display: flex;
+            }
+
             nav ul {
-                gap: 1.5rem;
-                font-size: 0.85rem;
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: rgba(253, 252, 251, 0.98);
+                flex-direction: column;
+                gap: 0;
+                padding: 1rem 0;
+                box-shadow: 0 10px 30px rgba(45, 52, 54, 0.1);
+            }
+
+            nav ul.active {
+                display: flex;
+            }
+
+            nav ul li {
+                width: 100%;
+                text-align: center;
+                padding: 1rem 0;
+                border-bottom: 1px solid #e8e4e0;
+            }
+
+            nav .logo {
+                font-size: 1.3rem;
+            }
+
+            /* Hero */
+            .hero {
+                padding: 5rem 1.5rem;
             }
 
             .hero h1 {
-                font-size: 3.5rem;
+                font-size: 3rem;
                 letter-spacing: 2px;
             }
 
             .hero .subtitle {
-                font-size: 1rem;
+                font-size: 0.9rem;
                 letter-spacing: 2px;
             }
 
+            .hero .tagline {
+                font-size: 1.1rem;
+            }
+
+            .hero .cta-buttons {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .btn {
+                padding: 0.9rem 2rem;
+                font-size: 0.8rem;
+            }
+
+            /* About */
             .about-content {
                 grid-template-columns: 1fr;
                 text-align: center;
@@ -678,10 +796,42 @@
             }
 
             .profile-img-container {
-                width: 300px;
-                height: 300px;
+                width: 280px;
+                height: 280px;
             }
 
+            .profile-img {
+                box-shadow: 15px 15px 0 var(--sage);
+            }
+
+            .about-text h3 {
+                font-size: 2rem;
+            }
+
+            .about-text p {
+                font-size: 1rem;
+            }
+
+            /* Projects */
+            .projects-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .project-card {
+                padding: 2rem;
+            }
+
+            .project-card h3 {
+                font-size: 1.5rem;
+            }
+
+            /* Reduce hover scale on mobile */
+            .project-card:hover {
+                transform: scale(1.02);
+            }
+
+            /* Timeline */
             .timeline::before {
                 left: 30px;
             }
@@ -689,23 +839,146 @@
             .timeline-item {
                 width: 100%;
                 padding-left: 80px;
-                padding-right: 0;
+                padding-right: 1rem;
             }
 
+            .timeline-item:nth-child(odd),
             .timeline-item:nth-child(even) {
                 left: 0;
+                padding-left: 80px;
+                padding-right: 1rem;
+            }
+
+            .timeline-content {
+                padding: 1.5rem;
+            }
+
+            .timeline-content:hover {
+                transform: scale(1.02);
             }
 
             .timeline-content::before {
                 left: -4rem !important;
             }
 
+            .timeline-content h3 {
+                font-size: 1.3rem;
+            }
+
+            /* Skills */
+            .skills-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .skill-card {
+                padding: 2rem;
+            }
+
+            .skill-card h3 {
+                font-size: 1.4rem;
+            }
+
+            /* Education */
+            .education-card {
+                padding: 2rem;
+            }
+
+            .education-card h3 {
+                font-size: 1.6rem;
+            }
+
+            /* Extracurricular */
+            .extra-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .extra-card {
+                padding: 2rem;
+            }
+
+            /* Reduce hover scale on mobile */
+            .extra-card:hover {
+                transform: scale(1.02);
+            }
+
+            /* Contact */
+            .contact-links {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .contact-link {
+                width: 100%;
+                max-width: 250px;
+            }
+
+            /* Sections */
             .section-title {
-                font-size: 2.5rem;
+                font-size: 2.2rem;
             }
 
             section {
-                padding: 6rem 1.5rem;
+                padding: 5rem 1.5rem;
+                min-height: auto;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .hero .subtitle {
+                font-size: 0.75rem;
+                letter-spacing: 1.5px;
+            }
+
+            .hero .tagline {
+                font-size: 1rem;
+            }
+
+            .profile-img-container {
+                width: 240px;
+                height: 240px;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .project-card h3 {
+                font-size: 1.3rem;
+            }
+
+            .tag {
+                font-size: 0.75rem;
+                padding: 0.3rem 0.8rem;
+            }
+
+            nav .logo {
+                font-size: 1.1rem;
+            }
+        }
+
+        /* Touch-friendly improvements */
+        @media (hover: none) and (pointer: coarse) {
+            .btn {
+                padding: 1.2rem 2.5rem;
+                min-height: 48px;
+            }
+
+            .contact-link {
+                min-height: 80px;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+            }
+
+            nav a {
+                padding: 0.5rem 1rem;
             }
         }
     </style>
@@ -715,7 +988,12 @@
     <nav>
         <div class="container">
             <div class="logo">Yashvi Kommidi</div>
-            <ul>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul id="nav-menu">
                 <li><a href="#home">Home</a></li>
                 <li><a href="#about">About</a></li>
                 <li><a href="#projects">Projects</a></li>
@@ -728,11 +1006,11 @@
         </div>
     </nav>
 
-    <!-- Hero Section - Text Only -->
+    <!-- Hero Section -->
     <section id="home" class="hero">
         <div class="hero-content">
             <h1>Yashvi Kommidi</h1>
-            
+            <p class="subtitle">Data Science Graduate Student</p>
             <p class="tagline">Uncovering stories in data for a more just world</p>
             <div class="cta-buttons">
                 <a href="#projects" class="btn btn-primary">View Projects</a>
@@ -752,8 +1030,8 @@
                 </div>
                 <div class="about-text">
                     <h3>Data Science Graduate Student</h3>
-                    <p>Hello! I'm a data science grad student at the University of Arizona.</p>
-                    <p>I love finding the stories hidden in data and using them to create a positive impact. My work blends coding, machine learning, and a passion for teaching. Whether I'm building predictive models or crafting interactive visualizations, I enjoy transforming complex datasets into clear, actionable insights that help solve real-world problems.</p>
+                    <p>Hello! I'm a data science grad student at the University of Arizona with professional experience in data engineering, machine learning, and analytics.</p>
+                    <p>I've built scalable data solutions and optimized data pipelines using Python, SQL, PySpark, and AWS in a full-time role at ADP. I love finding the stories hidden in data and using them to create a positive impact. My work blends coding, machine learning, and a passion for teaching. Whether I'm building predictive models or crafting interactive visualizations, I enjoy transforming complex datasets into clear, actionable insights that help solve real-world problems.</p>
                     <p>Currently working as a Student Research Associate at the College of Veterinary Medicine, analyzing multi-year student survey data to support curriculum improvement and educational outcomes.</p>
                 </div>
             </div>
@@ -765,67 +1043,91 @@
         <div class="container">
             <h2 class="section-title">Featured Projects</h2>
             <div class="projects-grid">
-                <div class="project-card">
+                <a href="https://drive.google.com/file/d/1gzqnqo-cXWn5aWSzeSQhgC--XxMC0NS5/view" class="project-card" target="_blank">
                     <h3>Resonance – AI Music Recommendation System</h3>
-                    <p>Built a recommendation engine that predicts users' next music selections with 93% accuracy without user prior data. Published in MUKT SHABD JOURNAL.</p>
+                    <p>Built a recommendation engine achieving 93% prediction accuracy using boosting algorithms and feature engineering, improving user engagement by 25% without requiring prior user data.</p>
+                    <div class="project-details">
+                        Developed end-to-end machine learning pipeline leveraging XGBoost, LightGBM, and advanced feature engineering techniques to predict users' next music selections. Implemented sophisticated data preprocessing and model evaluation strategies to achieve high accuracy rates while maintaining model interpretability.
+                    </div>
                     <div class="project-tags">
                         <span class="tag">Machine Learning</span>
-                        <span class="tag">Classification</span>
+                        <span class="tag">XGBoost</span>
                         <span class="tag">Feature Engineering</span>
+                        <span class="tag">Python</span>
                     </div>
-                    <div class="publication-badge">Published Research</div>
-                </div>
+                    <div class="publication-badge">Published in Mukt Shabd Journal</div>
+                </a>
 
-                <div class="project-card">
+                <a href="https://github.com/yashvikommidii/Podcast-Review-Summarization-and-Sentiment-Analysis" class="project-card" target="_blank">
                     <h3>Podcast Review Summarization & Sentiment Analysis</h3>
-                    <p>Built a full NLP pipeline to summarize and analyze emotional tone of 2M+ podcast reviews using TextRank, BART, VADER, and BERT models.</p>
+                    <p>Developed end-to-end NLP pipeline processing 2M+ podcast reviews with sentiment classification, achieving 87% F1-score using transformer models and ROUGE-based summarization evaluation.</p>
+                    <div class="project-details">
+                        Built comprehensive natural language processing pipeline utilizing TextRank, BART, VADER, and BERT models to analyze emotional tone and generate concise summaries. Implemented advanced text preprocessing, sentiment analysis algorithms, and evaluation metrics to deliver actionable insights from large-scale review datasets.
+                    </div>
                     <div class="project-tags">
                         <span class="tag">NLP</span>
                         <span class="tag">BERT</span>
                         <span class="tag">Sentiment Analysis</span>
                         <span class="tag">Python</span>
+                        <span class="tag">Transformers</span>
                     </div>
-                </div>
+                </a>
 
-                <div class="project-card">
+                <a href="https://github.com/YashviKommidi/nalysis-of-Emotions-Using-Keystroke-Dynamics-and-Typing-Behaviors" class="project-card" target="_blank">
                     <h3>Emotion Analysis Using Keystroke Dynamics</h3>
-                    <p>Explored the relationship between emotions, age, typing speed, and accuracy using the EmoSurv keystroke dataset with data mining techniques.</p>
+                    <p>Analyzed 500+ participants' keystroke patterns from EmoSurv dataset to uncover relationships between emotions, typing speed, and accuracy using exploratory data analysis.</p>
+                    <div class="project-details">
+                        Conducted comprehensive data mining analysis exploring correlations between emotional states, age demographics, typing speed, and accuracy metrics. Utilized advanced statistical techniques and data visualization to identify meaningful patterns in keystroke dynamics and behavioral typing patterns.
+                    </div>
                     <div class="project-tags">
                         <span class="tag">Data Mining</span>
                         <span class="tag">Python</span>
+                        <span class="tag">Statistical Analysis</span>
                         <span class="tag">Visualization</span>
                     </div>
-                </div>
+                </a>
 
                 <div class="project-card">
                     <h3>Tumor Diagnosis using Auto Stacked CNN</h3>
-                    <p>Created a Deep Learning AutoStack CNN model to predict brain tumors with 96% accuracy, emphasizing clinical relevance.</p>
+                    <p>Created AutoStack CNN model achieving 96% accuracy for brain tumor detection from 3,000+ medical images using deep learning and data augmentation techniques.</p>
+                    <div class="project-details">
+                        Designed and implemented sophisticated deep learning architecture combining multiple convolutional neural network layers with automated stacking techniques. Applied advanced image preprocessing, data augmentation strategies, and transfer learning to optimize model performance for clinical medical imaging applications, emphasizing both accuracy and clinical relevance.
+                    </div>
                     <div class="project-tags">
                         <span class="tag">Deep Learning</span>
                         <span class="tag">CNN</span>
                         <span class="tag">Medical AI</span>
+                        <span class="tag">TensorFlow</span>
                     </div>
                 </div>
 
-                <div class="project-card">
+                <a href="https://yashvikommidi.shinyapps.io/proj2datalens/" class="project-card" target="_blank">
                     <h3>Social Media Signals – Emotional Well-Being Predictor</h3>
-                    <p>Built an interactive Shiny dashboard to analyze how screen time, likes, and comments correlate with emotional states.</p>
+                    <p>Developed interactive Shiny dashboard analyzing 10,000+ user records to identify correlations between social media usage (screen time, likes, comments) and emotional states across platforms.</p>
+                    <div class="project-details">
+                        Built comprehensive R Shiny web application featuring interactive data visualizations and regression analysis to explore relationships between digital engagement metrics and psychological well-being. Implemented statistical modeling techniques to identify significant predictors of emotional states based on social media behavior patterns.
+                    </div>
                     <div class="project-tags">
                         <span class="tag">R</span>
                         <span class="tag">Shiny</span>
+                        <span class="tag">Regression Analysis</span>
                         <span class="tag">Data Visualization</span>
                     </div>
-                </div>
+                </a>
 
-                <div class="project-card">
+                <a href="https://github.com/yashvikommidii/Crop-Recommendation-System/tree/main" class="project-card" target="_blank">
                     <h3>Crop Recommendation System using KNN</h3>
                     <p>Developed a K-Nearest Neighbors model achieving over 95% accuracy to assist farmers in making data-driven agricultural decisions.</p>
+                    <div class="project-details">
+                        Implemented machine learning solution leveraging K-Nearest Neighbors algorithm to recommend optimal crops based on soil conditions, climate factors, and environmental parameters. Conducted extensive feature selection and hyperparameter tuning to maximize prediction accuracy and practical applicability for agricultural decision support systems.
+                    </div>
                     <div class="project-tags">
                         <span class="tag">Machine Learning</span>
                         <span class="tag">KNN</span>
                         <span class="tag">Agriculture AI</span>
+                        <span class="tag">Scikit-learn</span>
                     </div>
-                </div>
+                </a>
             </div>
         </div>
     </section>
@@ -840,7 +1142,12 @@
                         <div class="timeline-date">Jan 2025 - Present</div>
                         <h3>Student Research Associate</h3>
                         <h4>College of Veterinary Medicine, University of Arizona</h4>
-                        <p>Analyzing multi-year student survey data using Python, R, and Excel to support curriculum improvement.</p>
+                        <ul>
+                            <li>Built automated data visualization pipeline using Python and R to analyze 1,000+ student survey records, generating individualized reports for clinical rotation performance</li>
+                            <li>Developed statistical reports with Pandas and ggplot2 to identify curriculum trends, supporting data-driven academic decision-making</li>
+                            <li>Cleaned and standardized multi-source survey datasets, ensuring data quality for longitudinal analysis</li>
+                            <li>Leveraged large language models (LLMs) to automate report summaries and curriculum recommendations, reducing analysis time by 40%</li>
+                        </ul>
                     </div>
                 </div>
 
@@ -849,7 +1156,12 @@
                         <div class="timeline-date">July 2023 - Aug 2024</div>
                         <h3>Member Technical</h3>
                         <h4>ADP Pvt. Ltd, Hyderabad</h4>
-                        <p>Developed and optimized full-text search queries, improving data retrieval efficiency by 30%.</p>
+                        <ul>
+                            <li>Developed and optimized full-text search queries for AWS Neptune and OpenSearch, improving data retrieval efficiency by 30% for client-facing HR analytics applications</li>
+                            <li>Built automated ETL pipelines using Python, PySpark, and SQL to process client benchmarking files, increasing data processing speed by 20%</li>
+                            <li>Designed scalable data solutions using AWS services (S3, Lambda, EC2, Neptune), enhancing operational efficiency by 25%</li>
+                            <li>Collaborated with cross-functional engineering teams to architect data infrastructure and resolve complex data integration challenges</li>
+                        </ul>
                     </div>
                 </div>
 
@@ -858,16 +1170,24 @@
                         <div class="timeline-date">Jan 2022 - May 2023</div>
                         <h3>Undergraduate Teaching Assistant</h3>
                         <h4>Vidya Jyothi Institute of Technology</h4>
-                        <p>Supported professors in delivering Machine Learning, Python Programming, and AI courses.</p>
+                        <ul>
+                            <li>Supported professors in delivering Machine Learning, Python Programming, and Artificial Intelligence courses to 100+ students</li>
+                            <li>Conducted hands-on lab sessions and mentored students on algorithm implementation and coding best practices</li>
+                            <li>Developed supplementary learning materials and tutorials to enhance student understanding of complex AI/ML concepts</li>
+                        </ul>
                     </div>
                 </div>
 
                 <div class="timeline-item">
                     <div class="timeline-content">
-                        <div class="timeline-date">Aug 2022 - Nov 2022</div>
+                        <div class="timeline-date">Aug 2022 - Dec 2022</div>
                         <h3>Data Engineering Intern</h3>
                         <h4>ADP Pvt. Ltd, Hyderabad</h4>
-                        <p>Implemented knowledge graphs using AWS Neptune, improving efficiency by 25%.</p>
+                        <ul>
+                            <li>Constructed and implemented identity knowledge graphs using AWS Neptune, Databricks, and PySpark, improving data retrieval efficiency by 25% for organizational data relationships</li>
+                            <li>Optimized graph database queries using SQL and PySpark, enhancing query performance and scalability by 60% in data processing tasks</li>
+                            <li>Developed data engineering pipelines leveraging AWS services (Neptune, SageMaker, S3) to automate data transformation and model deployment workflows</li>
+                        </ul>
                     </div>
                 </div>
 
@@ -876,7 +1196,10 @@
                         <div class="timeline-date">Jan 2022 - Feb 2022</div>
                         <h3>Data Science Intern</h3>
                         <h4>Lets Grow More</h4>
-                        <p>Developed an image classification model achieving 95% accuracy using Scikit-learn.</p>
+                        <ul>
+                            <li>Developed image classification model achieving 95% accuracy using Scikit-learn and computer vision techniques</li>
+                            <li>Implemented feature extraction and preprocessing pipelines for efficient model training and evaluation</li>
+                        </ul>
                     </div>
                 </div>
 
@@ -885,7 +1208,10 @@
                         <div class="timeline-date">May 2021 - Jun 2021</div>
                         <h3>Data Science Intern</h3>
                         <h4>Exposys Data Labs</h4>
-                        <p>Engineered predictive models with 20% accuracy improvement using ML techniques.</p>
+                        <ul>
+                            <li>Engineered predictive models with 20% accuracy improvement using advanced machine learning techniques</li>
+                            <li>Conducted exploratory data analysis and feature engineering to optimize model performance</li>
+                        </ul>
                     </div>
                 </div>
 
@@ -894,75 +1220,100 @@
                         <div class="timeline-date">Jul 2020 - Sep 2020</div>
                         <h3>AI Intern</h3>
                         <h4>GMAT Verzeo</h4>
-                        <p>Implemented face mask detection using computer vision and machine learning.</p>
+                        <ul>
+                            <li>Implemented face mask detection system using computer vision and machine learning algorithms</li>
+                            <li>Applied deep learning techniques for real-time object detection and classification tasks</li>
+                        </ul>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Skills Section -->
+    <!-- Skills Section - UPDATED WITH ALL SKILLS FROM RESUME -->
     <section id="skills">
         <div class="container">
             <h2 class="section-title">Technical Skills</h2>
             <div class="skills-grid">
                 <div class="skill-card">
-                    <h3>Programming</h3>
+                    <h3>Programming & Databases</h3>
                     <ul class="skill-list">
                         <li>Python</li>
                         <li>SQL</li>
                         <li>R</li>
-                        <li>Java</li>
+                        <li>Java (Basic)</li>
+                        <li>Bash/Shell</li>
+                        <li>HTML/CSS</li>
+                        <li>MySQL</li>
                     </ul>
                 </div>
 
                 <div class="skill-card">
-                    <h3>Machine Learning</h3>
+                    <h3>Data Science & ML</h3>
                     <ul class="skill-list">
+                        <li>Pandas & NumPy</li>
                         <li>Scikit-learn</li>
-                        <li>TensorFlow</li>
-                        <li>XGBoost</li>
-                        <li>LightGBM</li>
+                        <li>XGBoost & LightGBM</li>
+                        <li>TensorFlow/Keras</li>
+                        <li>Deep Learning & CNN</li>
+                        <li>Statsmodels</li>
+                        <li>Feature Engineering</li>
+                        <li>Cross-validation</li>
+                        <li>Classification, Regression, Clustering</li>
                     </ul>
                 </div>
 
                 <div class="skill-card">
-                    <h3>Data Engineering</h3>
+                    <h3>Data Engineering & Cloud</h3>
                     <ul class="skill-list">
-                        <li>PySpark</li>
-                        <li>AWS Services</li>
-                        <li>ETL Pipelines</li>
-                        <li>Apache Spark</li>
+                        <li>PySpark & Apache Spark</li>
+                        <li>ETL/ELT Pipelines</li>
+                        <li>Data Warehousing</li>
+                        <li>AWS (S3, Lambda, EC2, Neptune)</li>
+                        <li>Databricks</li>
+                        <li>Snowflake (Basic)</li>
+                        <li>OpenSearch</li>
+                        <li>Graph Databases</li>
+                        <li>Knowledge Graphs</li>
                     </ul>
                 </div>
 
                 <div class="skill-card">
-                    <h3>Visualization</h3>
+                    <h3>Data Visualization & BI</h3>
                     <ul class="skill-list">
                         <li>Tableau</li>
                         <li>Power BI</li>
-                        <li>Matplotlib</li>
+                        <li>Matplotlib & Seaborn</li>
                         <li>Plotly</li>
+                        <li>Jupyter Notebook</li>
+                        <li>Excel (Pivot Tables, Macros)</li>
+                        <li>ggplot2</li>
                     </ul>
                 </div>
 
                 <div class="skill-card">
-                    <h3>Cloud & Tools</h3>
+                    <h3>Tools & Platforms</h3>
                     <ul class="skill-list">
-                        <li>AWS Neptune</li>
-                        <li>OpenSearch</li>
                         <li>Git & GitHub</li>
-                        <li>Docker</li>
+                        <li>AWS CLI</li>
+                        <li>Docker (Familiar)</li>
+                        <li>VS Code</li>
+                        <li>Google Colab</li>
+                        <li>CI/CD (Basic)</li>
+                        <li>RStudio</li>
                     </ul>
                 </div>
 
                 <div class="skill-card">
-                    <h3>Databases</h3>
+                    <h3>Statistical Analysis</h3>
                     <ul class="skill-list">
-                        <li>MySQL</li>
-                        <li>Graph Databases</li>
-                        <li>ER Modeling</li>
-                        <li>Snowflake</li>
+                        <li>Statistical Analysis</li>
+                        <li>Model Evaluation</li>
+                        <li>Regression Analysis</li>
+                        <li>Neural Networks</li>
+                        <li>Computer Vision</li>
+                        <li>NLP Techniques</li>
+                        <li>Hypothesis Testing</li>
                     </ul>
                 </div>
             </div>
@@ -977,21 +1328,21 @@
                 <div class="education-card">
                     <h3>University of Arizona, Tucson</h3>
                     <p class="degree">Master of Science - Data Science</p>
-                    <p class="date">Expected May 2026</p>
-                    <p><strong>Coursework:</strong> Foundations of Data Science, Data Mining, Machine Learning, Data Ethics, Statistical NLP, Data Visualization, SQL</p>
+                    <p class="date">Aug 2024 - May 2026</p>
+                    <p><strong>Coursework:</strong> Foundations of Data Science, Data Mining/Discovery, Introduction to Machine Learning, Data Ethics, Statistical NLP, Data Visualization, SQL, Data Science Public Interests</p>
                 </div>
 
                 <div class="education-card">
                     <h3>Vidya Jyothi Institute of Technology, Hyderabad</h3>
                     <p class="degree">Bachelor of Technology - Artificial Intelligence</p>
-                    <p class="date">July 2023</p>
-                    <p><strong>Coursework:</strong> Data Science, Neural Networks, Python, Data Mining, Machine Learning, Deep Learning, Computer Vision, NLP, Robotics, R Programming</p>
+                    <p class="date">Aug 2019 - July 2023</p>
+                    <p><strong>Coursework:</strong> Introduction to Data Science, Artificial Neural Networks, Python, Data Warehousing, Data Mining, Machine Learning using Python Lab, Deep Learning, Machine Learning, Computer Vision, Introduction to Artificial Intelligence, Database Management System, Robotics, Natural Language Processing, Industrial AI, R Programming, Internet of Things</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Extracurricular Section -->
+    <!-- Extracurricular Section - Enhanced with Zoom Hover -->
     <section id="extracurricular">
         <div class="container">
             <h2 class="section-title">Extracurricular Activities</h2>
@@ -1000,42 +1351,42 @@
                     <div class="extra-icon">🎓</div>
                     <h3>Machine Learning Club Lead</h3>
                     <p class="date">Jan 2021 - Jan 2022</p>
-                    <p>Mentored 100+ students through workshops on ML, statistics, and applied AI.</p>
+                    <p>Mentored 100+ students through workshops on ML, statistics, and applied AI. Organized hands-on coding sessions and project showcases.</p>
                 </div>
 
                 <div class="extra-card">
                     <div class="extra-icon">✍️</div>
                     <h3>Content Writer</h3>
                     <p class="date">Sep 2021 - Jun 2022</p>
-                    <p>Google Developer Students Club - Authored blogs and technical content.</p>
+                    <p>Google Developer Students Club - Authored technical blogs and educational content on emerging technologies and best practices.</p>
                 </div>
 
                 <div class="extra-card">
                     <div class="extra-icon">💻</div>
                     <h3>Hackathon Organizer</h3>
                     <p class="date">March 2022</p>
-                    <p>Organized state-level inter-college hackathon.</p>
+                    <p>Organized state-level inter-college hackathon with 200+ participants, coordinating logistics and judging panels.</p>
                 </div>
 
                 <div class="extra-card">
                     <div class="extra-icon">❤️</div>
                     <h3>Volunteer</h3>
                     <p class="date">Aug 2020 - Aug 2021</p>
-                    <p>Street Cause NGO - Organized donation drives for communities.</p>
+                    <p>Street Cause NGO - Organized donation drives and community outreach programs for underprivileged communities.</p>
                 </div>
 
-                <div class="extra-card">
+                <a href="https://yashvikommidi.my.canva.site/" class="extra-card" target="_blank">
                     <div class="extra-icon">📸</div>
                     <h3>Visual Content Creator</h3>
                     <p class="date">2020 - Present</p>
-                    <p>@passion.through_lens - Photography page featuring events and travel.</p>
-                </div>
+                    <p>@passion.through_lens - Photography page featuring campus events, cultural celebrations, and travel photography.</p>
+                </a>
 
                 <div class="extra-card">
                     <div class="extra-icon">👥</div>
-                    <h3>Academic Support</h3>
-                    <p class="date">Ongoing</p>
-                    <p>Led workshops and peer learning initiatives.</p>
+                    <h3>Academic Support Coordinator</h3>
+                    <p class="date">2020 - 2023</p>
+                    <p>Led peer learning initiatives and academic workshops to support fellow students in technical coursework.</p>
                 </div>
             </div>
         </div>
@@ -1046,7 +1397,7 @@
         <div class="container">
             <h2 class="section-title">Get In Touch</h2>
             <div class="contact-container">
-                <p>I'm always open to discussing data science projects, research opportunities, or potential collaborations. Feel free to reach out!</p>
+                <p>I'm always open to discussing data science projects, research opportunities, or potential collaborations. Whether you're interested in machine learning applications, data engineering solutions, or academic research, feel free to reach out!</p>
                 <div class="contact-links">
                     <a href="mailto:yashvikommidi@arizona.edu" class="contact-link">
                         <i>📧</i>
@@ -1064,16 +1415,28 @@
                         <i>📷</i>
                         <div>Instagram</div>
                     </a>
-                    <a href="https://yashvikommidi.my.canva.site/" class="contact-link" target="_blank">
-                        <i>🎨</i>
-                        <div>Portfolio</div>
-                    </a>
                 </div>
             </div>
         </div>
     </section>
 
     <script>
+        // Hamburger menu toggle
+        const hamburger = document.getElementById('hamburger');
+        const navMenu = document.getElementById('nav-menu');
+
+        hamburger.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
+
+        // Close menu when clicking on a link
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+            });
+        });
+
+        // Smooth scrolling
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -1083,6 +1446,7 @@
             });
         });
 
+        // Intersection Observer for animations
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -1095,6 +1459,7 @@
             observer.observe(el);
         });
 
+        // Active navigation highlighting
         window.addEventListener('scroll', () => {
             const sections = document.querySelectorAll('section');
             const navLinks = document.querySelectorAll('nav a');

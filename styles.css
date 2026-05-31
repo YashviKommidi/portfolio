@@ -8,16 +8,16 @@
 }
 
 :root {
-  --bg: #f4f7fb;
+  --bg: #fafbfc;
   --bg-alt: #ffffff;
   --bg-card: #ffffff;
-  --text: #101828;
-  --text-muted: #5b667a;
-  --accent: #0f766e;
-  --accent-hover: #0d5f59;
-  --accent-2: #7c3aed;
-  --ink: #09111f;
-  --border: rgba(15, 23, 42, 0.1);
+  --text: #1a1d21;
+  --text-muted: #5c6369;
+  --accent: #0d9488;
+  --accent-hover: #0f766e;
+  --accent-2: #14b8a6;
+  --ink: #1a1d21;
+  --border: rgba(0, 0, 0, 0.08);
   --radius: 18px;
   --max: 1040px;
   --gap: 2rem;
@@ -31,8 +31,8 @@ html {
 body {
   font-family: 'Plus Jakarta Sans', -apple-system, sans-serif;
   background:
-    radial-gradient(circle at 10% 0%, rgba(15, 118, 110, 0.12), transparent 28rem),
-    radial-gradient(circle at 90% 10%, rgba(124, 58, 237, 0.11), transparent 26rem),
+    radial-gradient(circle at 10% 0%, rgba(13, 148, 136, 0.08), transparent 28rem),
+    radial-gradient(circle at 90% 10%, rgba(13, 148, 136, 0.06), transparent 26rem),
     var(--bg);
   color: var(--text);
   line-height: 1.6;
@@ -237,8 +237,8 @@ a {
   padding: 8rem 4% 4rem;
   border-bottom: 1px solid var(--border);
   background:
-    radial-gradient(circle at 22% 20%, rgba(20, 184, 166, 0.22), transparent 24rem),
-    radial-gradient(circle at 80% 0%, rgba(124, 58, 237, 0.18), transparent 22rem),
+    radial-gradient(circle at 22% 20%, rgba(13, 148, 136, 0.12), transparent 24rem),
+    radial-gradient(circle at 80% 0%, rgba(13, 148, 136, 0.08), transparent 22rem),
     linear-gradient(135deg, #ffffff 0%, #eef7f7 100%);
 }
 
@@ -247,7 +247,7 @@ a {
   position: absolute;
   inset: auto 4% 0;
   height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(15, 118, 110, 0.45), transparent);
+  background: linear-gradient(90deg, transparent, rgba(13, 148, 136, 0.35), transparent);
 }
 
 .page-header h1 {
@@ -295,7 +295,7 @@ a {
   position: absolute;
   inset: 0 auto 0 0;
   width: 4px;
-  background: linear-gradient(180deg, var(--accent), var(--accent-2));
+  background: var(--accent);
 }
 
 .exp-item:hover,
@@ -369,7 +369,7 @@ a {
   position: absolute;
   inset: 0 0 auto;
   height: 4px;
-  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+  background: var(--accent);
   opacity: 0;
   transition: opacity 0.2s ease;
 }
@@ -386,7 +386,7 @@ a {
 .project-card-featured {
   grid-column: span 1;
   background:
-    radial-gradient(circle at 88% 8%, rgba(20, 184, 166, 0.18), transparent 12rem),
+    radial-gradient(circle at 88% 8%, rgba(13, 148, 136, 0.12), transparent 12rem),
     linear-gradient(145deg, #ffffff, #f5fbfb);
 }
 
@@ -485,7 +485,7 @@ a.project-card {
   border-radius: 28px;
   padding: 1.5rem;
   background:
-    radial-gradient(circle at 80% 12%, rgba(124, 58, 237, 0.16), transparent 12rem),
+    radial-gradient(circle at 80% 12%, rgba(13, 148, 136, 0.12), transparent 12rem),
     linear-gradient(145deg, #ffffff, #f4fbfb);
   box-shadow: var(--shadow);
 }
@@ -497,7 +497,7 @@ a.project-card {
   height: 112px;
   margin-bottom: 1.25rem;
   border-radius: 28px;
-  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  background: var(--accent);
   color: white;
   font-size: 2.4rem;
   font-weight: 800;
@@ -736,9 +736,3 @@ a.project-card {
   .hero-cta { flex-direction: column; }
 }
 
-@media (max-width: 768px) {
-  .home .nav-links a {
-    background: rgba(255, 255, 255, 0.08);
-    border-color: rgba(255, 255, 255, 0.14);
-  }
-}

@@ -298,6 +298,8 @@
 }
 
 .home .spotlight-card.featured {
+  display: flex;
+  flex-direction: column;
   grid-row: span 2;
   min-height: 520px;
   background:
@@ -317,6 +319,44 @@
 .home .card-desc {
   color: var(--home-muted);
   line-height: 1.7;
+}
+
+.home .biome-flow {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.8rem;
+  margin-top: auto;
+  padding-top: 2rem;
+}
+
+.home .biome-flow div {
+  border: 1px solid rgba(13, 148, 136, 0.12);
+  border-radius: 18px;
+  padding: 0.95rem;
+  background: rgba(255, 255, 255, 0.72);
+}
+
+.home .biome-flow strong {
+  display: block;
+  color: var(--home-accent);
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  margin-bottom: 0.5rem;
+}
+
+.home .biome-flow span {
+  display: block;
+  color: var(--home-text);
+  font-size: 0.88rem;
+  font-weight: 700;
+  line-height: 1.35;
+}
+
+.home .spotlight-note {
+  margin-top: 1rem;
+  border-left: 3px solid var(--home-accent);
+  padding-left: 1rem;
+  font-size: 0.92rem;
 }
 
 .home .card-row {
@@ -416,7 +456,8 @@
   }
 
   .home .hero-metrics,
-  .home .card-row {
+  .home .card-row,
+  .home .biome-flow {
     grid-template-columns: 1fr;
   }
 }

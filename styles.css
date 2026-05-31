@@ -491,18 +491,24 @@ a.project-card {
 }
 
 .profile-initials {
+  position: relative;
+  flex-shrink: 0;
   width: 112px;
   height: 112px;
+  aspect-ratio: 1;
   margin-bottom: 1.25rem;
   border-radius: 28px;
   overflow: hidden;
   background: var(--accent);
+  isolation: isolate;
 }
 
 .profile-initials img {
   width: 100%;
   height: 100%;
+  max-width: 100%;
   object-fit: cover;
+  object-position: center top;
   display: block;
 }
 
